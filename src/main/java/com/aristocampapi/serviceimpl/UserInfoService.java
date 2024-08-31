@@ -35,13 +35,13 @@ public class UserInfoService implements UserDetailsService {
 
 
         
-        try {
+ /*       try {
 			int loginId = Integer.parseInt(userDetail.get().getLoginName());
 			userDetail.get().setId(loginId);
 		} catch (Exception e) {
 			// TODO: handle exception by default auto generated id will be set 
 		}
-		// Converting userDetail to UserDetails 
+*/		// Converting userDetail to UserDetails 
         return userDetail.map(UserInfoDetails::new) 
                 .orElseThrow(() -> new UsernameNotFoundException("User not found " + username)); 
     } 

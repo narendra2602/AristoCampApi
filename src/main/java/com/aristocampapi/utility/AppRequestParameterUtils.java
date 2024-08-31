@@ -14,12 +14,13 @@ public class AppRequestParameterUtils {
 	public  int[] getRequestBodyParameters(String authHeader)
 	{
 
-		int returnValue[]= new int[2];
+		int returnValue[]= new int[3];
         String token = null; 
         if (authHeader != null && authHeader.startsWith("Bearer ")) { 
             token = authHeader.substring(7); 
             returnValue[0] = jwtService.extractLoginId(token);
             returnValue[1]=jwtService.extractUserType(token);
+            returnValue[2]=jwtService.extractLoginName(token);
         } 
         
         return returnValue;

@@ -17,5 +17,5 @@ public class CampDashboardRequest {
 	private int loginId;
 	private int userType;
 	private int mnth;
-
+	private int campcreationId;
 }

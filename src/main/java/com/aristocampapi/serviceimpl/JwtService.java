@@ -30,6 +30,7 @@ public class JwtService {
 		claims.put("usertype", userType);
 		claims.put("loginid", loginId);
 		claims.put("fname", fname);
+		claims.put("loginname", userName);
 	
 		
 		return createToken(claims, userName); 
@@ -62,6 +63,22 @@ public class JwtService {
 		return (int) claims.get("loginid");
 	} 
 
+	public int extractLoginName(String token) { 
+		final Claims claims = extractAllClaims(token);
+		String loginName= (String) (claims.get("loginname"));
+		int retVal=0;
+		 try {
+			retVal= Integer.parseInt(loginName);
+		} catch (NumberFormatException e) {
+			// TODO Auto-generated catch block
+			retVal=0;
+			System.out.println("loginName "+loginName);
+			//e.printStackTrace();
+		}
+				
+		return retVal;		
+				
+	} 
 	public int extractUserType(String token) { 
 		final Claims claims = extractAllClaims(token);
 		return (int) claims.get("usertype");

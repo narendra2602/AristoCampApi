@@ -10,5 +10,6 @@ public interface CampDashBoardNewCampDto {
 	public String getLocation_name();
 	public int getLine2emp_code();
 	public int getLine3emp_code();
+	public int getDiv_Code();
 
 }

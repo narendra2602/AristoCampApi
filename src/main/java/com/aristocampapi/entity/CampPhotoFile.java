@@ -15,31 +15,17 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="camptran")
+@Table(name="campphotofile")
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class CampTran {
+public class CampPhotoFile {
+
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private int id;
 	private int campeventId;
-	private int divCode;
-	private int depoCode;
-	private int campcreationId;
-	private int doctorPcode;
-	private int line2approvalBy;
-	private String line2approvalStatus;
-	private int line3approvalBy;
-	private String line3approvalStatus;
-	private String locationName;
-	private Date campDate;
-	private String campStartTime;
-	private String campEndTime;
-	private String campStatus;
-	private int mktYear;
-	private String remark;
-	private int createdBy;
-	
-	
-	
-
+	private String fileName;
+	private String fileType;
+//	private Date addedOn;
+	private int uploadedBy;
 }

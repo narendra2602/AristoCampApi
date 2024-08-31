@@ -52,8 +52,8 @@ public class CampComboServiceImpl implements CampComboService{
 
 
 	@Override
-	public ApiResponse<CampComboDataResponse> getCampList(int loginId) {
-		List<ComboDataDto> dataList=comboDataDao.getCampList(loginId);
+	public ApiResponse<CampComboDataResponse> getCampList(int divCode) {
+		List<ComboDataDto> dataList=comboDataDao.getCampList(divCode);
 		List<CampComboDataResponse> camplist = getResponseData(dataList);
 		int size=dataList.size();
 		ApiResponse<CampComboDataResponse> apiResponse = new ApiResponse<>("Camp",size,camplist);
@@ -63,8 +63,8 @@ public class CampComboServiceImpl implements CampComboService{
 
 
 	@Override
-	public ApiResponse<CampComboDataResponse> getBranchList(int loginId) {
-		List<ComboDataDto> dataList=comboDataDao.getBranchList(loginId);
+	public ApiResponse<CampComboDataResponse> getBranchList() {
+		List<ComboDataDto> dataList=comboDataDao.getBranchList();
 		List<CampComboDataResponse> branchlist = getResponseData(dataList);
 		int size=dataList.size();
 		ApiResponse<CampComboDataResponse> apiResponse = new ApiResponse<>("Branch",size,branchlist);

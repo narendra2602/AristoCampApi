@@ -18,9 +18,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.aristocampapi.entity.CampToolMaster;
-import com.aristocampapi.entity.CampToolTran;
 import com.aristocampapi.request.CampToolMasterRequest;
 import com.aristocampapi.request.CampToolTranRequest;
+import com.aristocampapi.response.CampToolResponse;
 import com.aristocampapi.response.CampToolTranResponse;
 import com.aristocampapi.service.CampToolMasterService;
 import com.aristocampapi.utility.AppRequestParameterUtils;
@@ -49,12 +49,16 @@ public class ToolController {
 	}
 	
 	@PostMapping("${mrc_camptooltran_entry_path}")
-	public ResponseEntity<CampToolTran> saveCampToolTran(@RequestBody CampToolTranRequest camptooltran,HttpServletRequest request)
+	public ResponseEntity<CampToolTranRequest> saveCampToolTran(@RequestBody List<CampToolTranRequest>  camptooltranList,HttpServletRequest request)
 	{
-		System.out.println(camptooltran.toString());
-		int createdBy=getLoginIdFromToken(request)[0];
-		camptooltran.setCreatedBy(createdBy);
-		return new ResponseEntity<CampToolTran>(campToolMasterService.saveCampToolTran(camptooltran),HttpStatus.CREATED);
+		int tokenArray[] = getLoginIdFromToken(request);
+		 int loginId=tokenArray[0];
+		 int userType=tokenArray[1];
+		 int loginName=tokenArray[2];
+		 int createdBy=loginName==0?loginId:loginName;
+
+		//camptooltran.setCreatedBy(createdBy);
+		return new ResponseEntity<CampToolTranRequest>(campToolMasterService.saveCampToolTran(camptooltranList),HttpStatus.CREATED);
 		
 	}
 
@@ -65,6 +69,17 @@ public class ToolController {
 
 		System.out.println(" id "+campeventId);
 		return new ResponseEntity<List<CampToolTranResponse>>(campToolMasterService.getToolTranData(campeventId), HttpStatus.OK);
+	
+	}
+
+	@GetMapping("${mrc_camptoollist_path}")
+	public ResponseEntity<List<CampToolResponse>> getToolList(HttpServletRequest request)
+	{
+
+		int tokenArray[] = getLoginIdFromToken(request);
+		 int userType=tokenArray[1];
+
+		return new ResponseEntity<List<CampToolResponse>>(campToolMasterService.getToolList(userType), HttpStatus.OK);
 	
 	}
 

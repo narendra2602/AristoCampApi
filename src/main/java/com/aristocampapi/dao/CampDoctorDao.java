@@ -12,6 +12,9 @@ public interface CampDoctorDao extends JpaRepository<DoctorCamp, Integer> {
 	
 	@Query(value="CALL CampDoctorDetail(:doctor_code);", nativeQuery=true)
 	DoctorCampDto getCampDoctorDetail(@Param("doctor_code") int doctor_code);
+	
+	@Query(value="CALL DoctorMaster(:doctor_code);", nativeQuery=true)
+	DoctorCampDto getDoctorDetail(@Param("doctor_code") int doctor_code);
 
 
 }

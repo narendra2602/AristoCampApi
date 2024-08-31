@@ -100,7 +100,7 @@ public class CampDashBoardServiceImpl implements CampDashBoardService {
 		
 		CampDashboardRecentCampList.forEach(data->{
 			CampDashBoardRecentCampResponse res=new CampDashBoardRecentCampResponse();
-			res.setCampeventId(data.getCampcreation_id());
+			res.setCampeventId(data.getCampevent_id());
 			res.setCampDate(data.getCamp_date());
 			res.setCampName(data.getCamp_name());
 			res.setCampLocation(data.getLocation_name());

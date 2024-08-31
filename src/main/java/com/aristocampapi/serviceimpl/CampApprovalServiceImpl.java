@@ -53,18 +53,18 @@ public class CampApprovalServiceImpl implements CampApprovalService{
 
 		Optional<CampTran> campTranData = campApprovalDao.findById(campeventId);
 		CampTran camp = campTranData.get();
-		String message="Not Saved";
+		String message=approvalStatus.equals("Y")?"Approved Successfully":"Not Approved";
+
 		if(userType==30)
 		{
 			camp.setLine2approvalStatus(approvalStatus);
-			message="Approved Successfully";
 		}
 		else if(userType==40)
 		{
 			camp.setLine3approvalStatus(approvalStatus);
-			message="Approved Successfully";
+			
 		}
-			System.out.println("campeventid "+campeventId+" "+userType+"status "+approvalStatus);
+			
 		camp = campApprovalDao.save(camp);
 		CampApprovalStatusResponse res=new CampApprovalStatusResponse();
 		res.setId(campeventId);

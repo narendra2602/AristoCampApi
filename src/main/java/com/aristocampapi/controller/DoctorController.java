@@ -44,6 +44,15 @@ public class DoctorController {
 		
 	}
 	
+	@GetMapping("${mrc_doctormaster_path}")
+	public ResponseEntity<DoctorResponse> getDoctorMaster(@PathVariable("doctorCode") int doctorCode,HttpServletRequest request)
+	{
+
+		System.out.println(" code"+doctorCode);
+		return new ResponseEntity<DoctorResponse>(doctorCampService.getDoctorMaster(doctorCode), HttpStatus.OK);
+	
+	}
+
 	@GetMapping("${mrc_doctordetail_path}")
 	public ResponseEntity<DoctorResponse> getDoctorDetails(@PathVariable("doctorCode") int doctorCode,HttpServletRequest request)
 	{
@@ -52,7 +61,6 @@ public class DoctorController {
 		return new ResponseEntity<DoctorResponse>(doctorCampService.getDoctorDetails(doctorCode), HttpStatus.OK);
 	
 	}
-
 
 	
 	   private int[] getLoginIdFromToken(HttpServletRequest request)

@@ -59,4 +59,23 @@ public class DoctorCampServiceImpl implements DoctorCampService{
 		return res;
 	}
 
+	@Override
+	public DoctorResponse getDoctorMaster(int doctorCode) {
+		DoctorCampDto data=doctorCampDao.getDoctorDetail(doctorCode); 
+		int size=0;
+		
+			DoctorResponse res=new DoctorResponse();
+			res.setName(data.getName());
+			res.setQualification(data.getQualification());
+			res.setRegistrationNumber(data.getRegistration_number());
+			res.setAddress(data.getAddress());
+			res.setCity(data.getCity());
+			res.setPinCode(data.getPin_code());
+			res.setMobileNo(data.getMobile_no());
+			res.setEmailId(data.getEmail_id());
+			
+		
+		return res;
+	}
+
 }

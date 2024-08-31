@@ -16,6 +16,7 @@ import lombok.NoArgsConstructor;
 public class CampTranRequest {
 
 	private int campeventId;
+	private int divCode;
 	private int depoCode;
 	private int campcreationId;
 	private int doctorPcode;
@@ -29,6 +30,7 @@ public class CampTranRequest {
 	private String campEndTime;
 	private String campStatus;
 	private int mktYear;
+	private String remark;
 	private int createdBy;
 
 	private int loginId;

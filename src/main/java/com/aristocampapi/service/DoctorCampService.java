@@ -10,5 +10,6 @@ public interface DoctorCampService {
 	
 	DoctorCamp saveDoctorCamp(DoctorCampRequest doctorCamp);
 	DoctorResponse getDoctorDetails(int doctorCode);
+	DoctorResponse getDoctorMaster(int doctorCode);
 
 }

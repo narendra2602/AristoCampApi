@@ -9,13 +9,12 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class CampToolTranResponse {
+public class CampMasterResponse {
 	
-	private int camptooltranId;
-	private int camptoolId;
-	private String toolName;
-	private int qtyReceived;
-	private int qtyIssued;
-	private int createdBy;
+	private int id;
+	private int  campId;
+	private int divCode;
+	private String divName;
+	private String CampName;
 
 }

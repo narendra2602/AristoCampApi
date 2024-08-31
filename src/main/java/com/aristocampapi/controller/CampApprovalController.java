@@ -49,7 +49,9 @@ Logger logger = LoggerFactory.getLogger(LoginController.class);
 	public ResponseEntity<CampApprovalStatusResponse> saveApprovalStatusData(@PathVariable("campeventId") int campeventId,@PathVariable("approvalStatus") String approvalStatus,HttpServletRequest request)
 	{
 
-		int userType=getLoginIdFromToken(request)[1];
+		int tokenArray[] = getLoginIdFromToken(request);
+
+		 int userType=tokenArray[1];
 		System.out.println("user type "+userType);
 		return new ResponseEntity<CampApprovalStatusResponse>(campApprovalService.saveApprovalStatusData(campeventId,userType,approvalStatus), HttpStatus.OK);
 	

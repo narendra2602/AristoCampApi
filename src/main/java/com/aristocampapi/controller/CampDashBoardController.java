@@ -39,10 +39,12 @@ public class CampDashBoardController {
 	@PostMapping("${mrc_dashboard_path}")
 	public ResponseEntity<List<CampDashBoardPanelResponse>> getDashBoardPanelData(@RequestBody CampDashboardRequest campDashboardRequest,HttpServletRequest request)
 	{
-		int loginId=getLoginIdFromToken(request)[0];
-		int userType=getLoginIdFromToken(request)[1];
+ 		 int tokenArray[] = getLoginIdFromToken(request);
+		 int loginId=tokenArray[0];
+		 int userType=tokenArray[1];
+		 int loginName=tokenArray[2];
 
-		campDashboardRequest.setLoginId(loginId);
+		 campDashboardRequest.setLoginId(loginName==0?loginId:loginName);
 		campDashboardRequest.setUserType(userType);
 		
 		
@@ -54,10 +56,12 @@ public class CampDashBoardController {
 	@PostMapping("${mrc_dashboard_calendar_path}")
 	public ResponseEntity<List<CampDashBoardCalendarResponse>> getDashBoardCalendarData(@RequestBody CampDashboardRequest campDashboardRequest,HttpServletRequest request)
 	{
-		int loginId=getLoginIdFromToken(request)[0];
-		int userType=getLoginIdFromToken(request)[1];
+		 int tokenArray[] = getLoginIdFromToken(request);
+		 int loginId=tokenArray[0];
+		 int userType=tokenArray[1];
+		 int loginName=tokenArray[2];
 
-		campDashboardRequest.setLoginId(loginId);
+		 campDashboardRequest.setLoginId(loginName==0?loginId:loginName);
 		campDashboardRequest.setUserType(userType);
 		
 		
@@ -68,10 +72,12 @@ public class CampDashBoardController {
 	@PostMapping("${mrc_dashboard_newcamp_path}")
 	public ResponseEntity<List<CampDashBoardNewCampResponse>> getDashBoardNewCamps(@RequestBody CampDashboardRequest campDashboardRequest,HttpServletRequest request)
 	{
-		int loginId=getLoginIdFromToken(request)[0];
-		int userType=getLoginIdFromToken(request)[1];
+		 int tokenArray[] = getLoginIdFromToken(request);
+		 int loginId=tokenArray[0];
+		 int userType=tokenArray[1];
+		 int loginName=tokenArray[2];
 
-		campDashboardRequest.setLoginId(loginId);
+		 campDashboardRequest.setLoginId(loginName==0?loginId:loginName);
 		campDashboardRequest.setUserType(userType);
 		
 		
@@ -82,10 +88,12 @@ public class CampDashBoardController {
 	@PostMapping("${mrc_dashboard_recentcamp_path}")
 	public ResponseEntity<List<CampDashBoardRecentCampResponse>> getDashBoardRecentCamps(@RequestBody CampDashboardRequest campDashboardRequest,HttpServletRequest request)
 	{
-		int loginId=getLoginIdFromToken(request)[0];
-		int userType=getLoginIdFromToken(request)[1];
+		 int tokenArray[] = getLoginIdFromToken(request);
+		 int loginId=tokenArray[0];
+		 int userType=tokenArray[1];
+		 int loginName=tokenArray[2];
 
-		campDashboardRequest.setLoginId(loginId);
+		 campDashboardRequest.setLoginId(loginName==0?loginId:loginName);
 		campDashboardRequest.setUserType(userType);
 		
 		
