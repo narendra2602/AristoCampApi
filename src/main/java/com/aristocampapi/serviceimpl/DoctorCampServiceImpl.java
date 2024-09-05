@@ -46,6 +46,7 @@ public class DoctorCampServiceImpl implements DoctorCampService{
 		int size=0;
 		
 			DoctorResponse res=new DoctorResponse();
+			res.setId(data.getId());
 			res.setName(data.getName());
 			res.setQualification(data.getQualification());
 			res.setRegistrationNumber(data.getRegistration_number());

@@ -22,6 +22,7 @@ import com.aristocampapi.request.CampToolMasterRequest;
 import com.aristocampapi.request.CampToolTranRequest;
 import com.aristocampapi.response.CampToolResponse;
 import com.aristocampapi.response.CampToolTranResponse;
+import com.aristocampapi.response.UserApiResponse;
 import com.aristocampapi.service.CampToolMasterService;
 import com.aristocampapi.utility.AppRequestParameterUtils;
 
@@ -49,7 +50,7 @@ public class ToolController {
 	}
 	
 	@PostMapping("${mrc_camptooltran_entry_path}")
-	public ResponseEntity<CampToolTranRequest> saveCampToolTran(@RequestBody List<CampToolTranRequest>  camptooltranList,HttpServletRequest request)
+	public ResponseEntity<UserApiResponse> saveCampToolTran(@RequestBody List<CampToolTranRequest>  camptooltranList,HttpServletRequest request)
 	{
 		int tokenArray[] = getLoginIdFromToken(request);
 		 int loginId=tokenArray[0];
@@ -58,7 +59,7 @@ public class ToolController {
 		 int createdBy=loginName==0?loginId:loginName;
 
 		//camptooltran.setCreatedBy(createdBy);
-		return new ResponseEntity<CampToolTranRequest>(campToolMasterService.saveCampToolTran(camptooltranList),HttpStatus.CREATED);
+		return new ResponseEntity<UserApiResponse>(campToolMasterService.saveCampToolTran(camptooltranList),HttpStatus.CREATED);
 		
 	}
 

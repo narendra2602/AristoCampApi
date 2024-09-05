@@ -2,6 +2,7 @@ package com.aristocampapi.dto;
 
 public interface DoctorCampDto {
 	
+	public int getId();
 	public String getName();
 	public String getQualification();
 	public String getRegistration_number();

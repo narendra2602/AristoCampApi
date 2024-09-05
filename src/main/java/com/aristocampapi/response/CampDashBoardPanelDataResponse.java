@@ -9,16 +9,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class DoctorResponse {
+public class CampDashBoardPanelDataResponse {
 	
-	private int id;
-	private String name;
-	private String qualification;
-	private String registrationNumber;
-	private String address;
-	private String city;
-	private int pinCode;
-	private long mobileNo;
-	private String emailId;
+//	private int id;
+	private String campDate;
+	private String divName;
+	private String campName;
+	private String location;
+	
 
 }

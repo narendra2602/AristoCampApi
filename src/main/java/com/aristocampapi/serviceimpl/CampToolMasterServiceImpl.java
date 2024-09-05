@@ -16,6 +16,7 @@ import com.aristocampapi.request.CampToolMasterRequest;
 import com.aristocampapi.request.CampToolTranRequest;
 import com.aristocampapi.response.CampToolResponse;
 import com.aristocampapi.response.CampToolTranResponse;
+import com.aristocampapi.response.UserApiResponse;
 import com.aristocampapi.service.CampToolMasterService;
 
 @Service
@@ -54,7 +55,7 @@ public class CampToolMasterServiceImpl implements CampToolMasterService{
 		
 		campToolList.forEach(data->{
 			CampToolTranResponse res=new CampToolTranResponse();
-			res.setCamptooltranId(data.getCamptool_id());
+			res.setCamptooltranId(data.getCamptooltran_id());
 			res.setCamptoolId(data.getCamptool_id());
 			res.setToolName(data.getTool_name());
 			res.setQtyReceived(data.getQty_received());
@@ -66,7 +67,7 @@ public class CampToolMasterServiceImpl implements CampToolMasterService{
 		return responseList;
 	}
 	@Override
-	public CampToolTranRequest saveCampToolTran(List<CampToolTranRequest> camptooltranList) {
+	public UserApiResponse saveCampToolTran(List<CampToolTranRequest> camptooltranList) {
 		
 		List<CampToolTran> dataList= new ArrayList<CampToolTran>();
 		// TODO Auto-generated method stub
@@ -79,15 +80,23 @@ public class CampToolMasterServiceImpl implements CampToolMasterService{
 			camptooltran.setQtyReceived(data.getQtyReceived());
 			camptooltran.setQtyIssued(data.getQtyIssued());
 			camptooltran.setCreatedBy(data.getCreatedBy());
-			campToolTranDao.save(camptooltran);
-			//dataList.add(camptooltran);
+//			campToolTranDao.save(camptooltran);
+			dataList.add(camptooltran);
 		});
+		List<CampToolTran> camptooltran = campToolTranDao.saveAll(dataList);
+		int size=dataList.size();
+		System.out.println("size of the data is *****"+size);
+
+		UserApiResponse userResponse=new UserApiResponse();
+        userResponse.setId(size);
+
+
+        userResponse.setMessage("Tools Updated  Successfully");
+        return userResponse; 
+	    
 		
-		    
-		
-		//List<CampToolTran> camptooltran = campToolTranDao.saveAll(dataList);
 				
-		return camptooltranList.get(0);
+//		return camptooltranList.get(0);
 		
 		
 	}
