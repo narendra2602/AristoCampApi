@@ -13,6 +13,7 @@ public interface CampPlannerService {
 	
 
 	List<CampPlannerResponse> getCampPlannerList(int myear,int loginId,int userType);
+	List<CampPlannerResponse> getCampPlannerGroup(int myear,int campcreationId,int psrCode);
 
 	
 }

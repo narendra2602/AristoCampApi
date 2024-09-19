@@ -13,6 +13,7 @@ import com.aristocampapi.dto.CampBranchDto;
 import com.aristocampapi.dto.CampCreationDto;
 import com.aristocampapi.entity.CampCreation;
 import com.aristocampapi.response.CampBranchResponse;
+import com.aristocampapi.response.CampCreationDeleteResponse;
 import com.aristocampapi.response.CampCreationResponse;
 import com.aristocampapi.service.CampCreationService;
 
@@ -73,6 +74,21 @@ public class CampCreationServiceImpl implements CampCreationService{
 			responseList.add(res);
 		});
 		return responseList;
+	}
+	@Override
+	public CampCreationDeleteResponse deleteCampCreation(int campcreationId) {
+		int size=0;
+		size = campCreationDao.deleteCampCreation(campcreationId); 
+		String wtxt="Deleted Sucessfully";
+		if(size==9999)
+		 wtxt="Record Not Found";
+		else if(size>0)
+			 wtxt="Can't Delete This Record";
+		CampCreationDeleteResponse res=new CampCreationDeleteResponse();
+		res.setCampcreationId(campcreationId);
+		res.setMessage(wtxt);
+		
+		return res;
 	}
 	
 }

@@ -38,6 +38,7 @@ public class CampTran {
 	private int mktYear;
 	private String remark;
 	private int createdBy;
+	private int psrCode;
 	
 	
 	

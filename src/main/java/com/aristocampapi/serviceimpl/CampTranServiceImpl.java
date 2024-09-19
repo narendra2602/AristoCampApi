@@ -45,12 +45,18 @@ public class CampTranServiceImpl implements CampTranService{
 			camptran.setMktYear(campTranreq.getMktYear());
 			camptran.setRemark(campTranreq.getRemark());
 			camptran.setCreatedBy(campTranreq.getCreatedBy());
+			camptran.setPsrCode(campTranreq.getPsrCode());
 		}
 		else if(updateType==2)
 		{
 			camptran=campTranDao.findById(campTranreq.getCampeventId()).get();
 			camptran.setDoctorPcode(campTranreq.getDoctorPcode());
 			camptran.setRemark(campTranreq.getRemark());
+			camptran.setPsrCode(campTranreq.getPsrCode());
+			camptran.setCampDate(campTranreq.getCampDate());
+			camptran.setCampStartTime(campTranreq.getCampStartTime());
+			camptran.setCampEndTime(campTranreq.getCampEndTime());
+
 			
 		}
 		else if(updateType==3)

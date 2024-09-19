@@ -73,7 +73,15 @@ public class CampPlannerController {
 	
 	}
 
+	@GetMapping("${mrc_campplannergroup_path}")
+	public ResponseEntity<List<CampPlannerResponse>> getCampPlannerGroup(@PathVariable("myear") int myear,@PathVariable("campcreationId") int campcreationId,@PathVariable("psrCode") int psrCode,HttpServletRequest request)
+	{
+
+
+		return new ResponseEntity<List<CampPlannerResponse>>(campPlannerService.getCampPlannerGroup(myear,campcreationId,psrCode), HttpStatus.OK);
 	
+	}
+
 	   private int[] getLoginIdFromToken(HttpServletRequest request)
 	    {
 			String authHeader = request.getHeader("Authorization");

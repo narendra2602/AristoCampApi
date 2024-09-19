@@ -22,5 +22,6 @@ public class CampPlannerRequest {
 	private int createdBy;
 	private int line2;
 	private int line3;
+	private String campStatus;
 
 }

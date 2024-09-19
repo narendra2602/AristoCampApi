@@ -32,7 +32,7 @@ public class CampTranRequest {
 	private int mktYear;
 	private String remark;
 	private int createdBy;
-
+	private int psrCode;
 	private int loginId;
 	private int userType;
 }

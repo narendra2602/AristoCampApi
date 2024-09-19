@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.aristocampapi.entity.CampCreation;
 import com.aristocampapi.response.CampBranchResponse;
+import com.aristocampapi.response.CampCreationDeleteResponse;
 import com.aristocampapi.response.CampCreationResponse;
 import com.aristocampapi.service.CampCreationService;
 import com.aristocampapi.utility.AppRequestParameterUtils;
@@ -72,6 +73,16 @@ public class CampCreationController {
 
 		return new ResponseEntity<List<CampBranchResponse>>(campCreationService.getCampBranchList(campeventId), HttpStatus.OK);
 
+	
+	}
+
+	@GetMapping("${mrc_deletecampcreation_path}")
+	public ResponseEntity<CampCreationDeleteResponse> deleteCampCreation(@PathVariable("campcreationId") int campcreationId)
+	{
+
+		
+
+		return new ResponseEntity<CampCreationDeleteResponse>(campCreationService.deleteCampCreation(campcreationId), HttpStatus.OK);
 	
 	}
 

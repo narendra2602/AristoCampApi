@@ -18,5 +18,9 @@ public interface CampCreationDao extends JpaRepository<CampCreation, Integer>{
 	
 	@Query(value="CALL getCampBranch(:campeventId);", nativeQuery=true)
 	List<CampBranchDto> getCampBranch(@Param("campeventId") int campeventId);
+	
+	@Query(value="CALL deleteCampCrreation(:campcreationId);", nativeQuery=true)
+	int  deleteCampCreation(@Param("campcreationId") int campcreationId);
+
 
 }

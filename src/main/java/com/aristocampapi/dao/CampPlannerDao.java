@@ -18,4 +18,8 @@ public interface CampPlannerDao extends JpaRepository<CampPlanner, Integer>{
 	@Query(value="CALL getCampPlannerList(:myear,:loginId,:userType);", nativeQuery=true)
 	List<CampPlannerDto> getCampPlannerList(@Param("myear") int myear,@Param("loginId") int loginId,@Param("userType") int userType);
 
+	
+	@Query(value="CALL getCampPlannerGroup(:myear,:campcreationId,:psrCode);", nativeQuery=true)
+	List<CampPlannerDto> getCampPlannerGroup(@Param("myear") int myear,@Param("campcreationId") int campcreationId,@Param("psrCode") int psrCode);
+
 }

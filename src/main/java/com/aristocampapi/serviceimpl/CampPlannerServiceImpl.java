@@ -36,7 +36,7 @@ public class CampPlannerServiceImpl implements CampPlannerService{
 			campPlanner.setLine2(data.getLine2());
 			campPlanner.setLine3(data.getLine3());
 			campPlanner.setMktYear(data.getMktYear());
-			
+			campPlanner.setCampStatus(data.getCampStatus());
 			dataList.add(campPlanner);
 		});
 		List<CampPlanner> campPlaner = campPlannerDao.saveAll(dataList);
@@ -97,6 +97,37 @@ public class CampPlannerServiceImpl implements CampPlannerService{
 		
 		campToolList.forEach(data->{
 			CampPlannerResponse res=new CampPlannerResponse();
+			res.setCampplannerId(data.getCampplanner_id());
+			res.setCampcreationId(data.getCampcreation_id());
+			res.setCampId(data.getCamp_id());
+			res.setCampName(data.getCamp_name());
+			res.setCampeventId(data.getCampevent_id());
+			res.setDoctorCode(data.getDoctor_code());
+			res.setDoctorName(data.getDoctor_name());
+			res.setPsrCode(data.getPsr_code());
+			res.setPsrName(data.getPsr_name());
+			
+			responseList.add(res);
+		});
+		
+		return responseList;
+	}
+
+	@Override
+	public List<CampPlannerResponse> getCampPlannerGroup(int myear, int campcreationId, int psrCode) {
+		List<CampPlannerDto> campToolList=campPlannerDao.getCampPlannerGroup(myear,campcreationId,psrCode); 
+		int size=0;
+		
+		System.out.println("size of list "+size);
+		if(campToolList!=null)
+			size=campToolList.size();
+		
+		List<CampPlannerResponse> responseList= new ArrayList<CampPlannerResponse>();
+		// TODO Auto-generated method stub
+		
+		campToolList.forEach(data->{
+			CampPlannerResponse res=new CampPlannerResponse();
+			res.setCampplannerId(data.getCampplanner_id());
 			res.setCampcreationId(data.getCampcreation_id());
 			res.setCampId(data.getCamp_id());
 			res.setCampName(data.getCamp_name());

@@ -60,6 +60,7 @@ public class CampToolMasterServiceImpl implements CampToolMasterService{
 			res.setToolName(data.getTool_name());
 			res.setQtyReceived(data.getQty_received());
 			res.setQtyIssued(data.getQty_issued());
+			res.setQtyBalanced(data.getQty_received()-data.getQty_issued());
 			res.setCreatedBy(data.getCreated_by());
 			responseList.add(res);
 		});
@@ -79,6 +80,7 @@ public class CampToolMasterServiceImpl implements CampToolMasterService{
 			camptooltran.setCamptoolId(data.getCamptoolId());
 			camptooltran.setQtyReceived(data.getQtyReceived());
 			camptooltran.setQtyIssued(data.getQtyIssued());
+			camptooltran.setQtyBalanced(data.getQtyReceived()-data.getQtyIssued());
 			camptooltran.setCreatedBy(data.getCreatedBy());
 //			campToolTranDao.save(camptooltran);
 			dataList.add(camptooltran);

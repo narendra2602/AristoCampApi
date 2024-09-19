@@ -24,5 +24,6 @@ public class CampToolTran {
 	private int camptoolId;
 	private int qtyReceived;
 	private int qtyIssued;
+	private int qtyBalanced;
 	private int createdBy;
 }
