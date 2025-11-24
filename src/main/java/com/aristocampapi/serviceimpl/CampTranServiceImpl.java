@@ -59,11 +59,17 @@ public class CampTranServiceImpl implements CampTranService{
 
 			
 		}
-		else if(updateType==3)
+		else if(updateType==20)  // line 1 manager
 		{
 			camptran=campTranDao.findById(campTranreq.getCampeventId()).get();
 			camptran.setCampStatus(campTranreq.getCampStatus());
 			camptran.setRemark(campTranreq.getRemark());
+			
+		}
+		else if(updateType==10) // psr remark
+		{
+			camptran=campTranDao.findById(campTranreq.getCampeventId()).get();
+			camptran.setPsrRemark(campTranreq.getRemark());
 			
 		}
 
@@ -77,11 +83,11 @@ public class CampTranServiceImpl implements CampTranService{
 		
 		CampTranResponse res=new CampTranResponse();
 			res.setCampeventId(data.getCampevent_id());
-			res.setCamp_date(data.getCamp_date());
-			res.setCamp_name(data.getCamp_name());
-			res.setLocation_name(data.getLocation_name());
-			res.setLine1_manager(data.getLine1_manager());
-			res.setLocation_name(data.getLocation_name());
+			res.setCampDate(data.getCamp_date());
+			res.setCampName(data.getCamp_name());
+			res.setLocationName(data.getLocation_name());
+			res.setLine1Manager(data.getLine1_manager());
+			res.setLocationName(data.getLocation_name());
 			res.setLine2(data.getLine2());
 			res.setLine2approval(data.getLine2approval());
 			res.setLine3(data.getLine3());
@@ -90,6 +96,14 @@ public class CampTranServiceImpl implements CampTranService{
 			res.setDoctorName(data.getDoctor_name());
 			res.setCampStatus(data.getCamp_status());
 			res.setRemark(data.getCamp_remark());
+			res.setCampStartTime(data.getCamp_starttime());
+			res.setCampEndTime(data.getCamp_endtime());
+			res.setPsrName(data.getPsr_name());
+			res.setLine2Remark(data.getline2Remark());
+			res.setLine3Remark(data.getline3Remark());
+			res.setPsrRemark(data.getPsr_remark());
+			
+			
 		return res;
 	}
 

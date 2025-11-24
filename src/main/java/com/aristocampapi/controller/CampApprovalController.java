@@ -12,10 +12,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.aristocampapi.request.CampTranRequest;
 import com.aristocampapi.response.CampApprovalResponse;
 import com.aristocampapi.response.CampApprovalStatusResponse;
 import com.aristocampapi.service.CampApprovalService;
@@ -45,15 +47,15 @@ Logger logger = LoggerFactory.getLogger(LoginController.class);
 	}
 
 	
-	@PutMapping("${mrc_saveapproval_path}")
-	public ResponseEntity<CampApprovalStatusResponse> saveApprovalStatusData(@PathVariable("campeventId") int campeventId,@PathVariable("approvalStatus") String approvalStatus,HttpServletRequest request)
+	@PostMapping("${mrc_saveapproval_path}")
+	public ResponseEntity<CampApprovalStatusResponse> saveApprovalStatusData(@RequestBody CampTranRequest camptran,HttpServletRequest request)
 	{
 
 		int tokenArray[] = getLoginIdFromToken(request);
 
 		 int userType=tokenArray[1];
 		System.out.println("user type "+userType);
-		return new ResponseEntity<CampApprovalStatusResponse>(campApprovalService.saveApprovalStatusData(campeventId,userType,approvalStatus), HttpStatus.OK);
+		return new ResponseEntity<CampApprovalStatusResponse>(campApprovalService.saveApprovalStatusData(camptran,userType), HttpStatus.OK);
 	
 	}
 

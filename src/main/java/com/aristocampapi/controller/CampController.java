@@ -97,7 +97,8 @@ public class CampController {
 		 int loginName=tokenArray[2];
 		 camptran.setCreatedBy(loginName==0?loginId:loginName);
 		 camptran.setUserType(userType);
-		 int updateType=3;
+		 int updateType=userType;
+		
 		
 		return new ResponseEntity<CampTran>(campTranService.saveCampTran(camptran,updateType),HttpStatus.CREATED);
 		

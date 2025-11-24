@@ -1,4 +1,4 @@
-package com.aristocampapi.response;
+package com.aristocampapi.request;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
@@ -11,14 +11,6 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class CampDashBoardRecentCampResponse {
-
-	
-	private int campeventId;
-	private String campDate;
-	private String campName;
-	private String campLocation;
-	private String line1Manager;
-	private String approvedStatus;
-	private String campStatus;
+public class CampReportRequest {
+	private int campcreationId;
 }

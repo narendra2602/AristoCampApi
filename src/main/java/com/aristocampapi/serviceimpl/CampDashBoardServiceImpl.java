@@ -113,7 +113,7 @@ public class CampDashBoardServiceImpl implements CampDashBoardService {
 			res.setCampLocation(data.getLocation_name());
 			res.setLine1Manager(data.getLine1_manager());
 			res.setApprovedStatus(data.getApproved_status());
-			
+			res.setCampStatus(data.getCamp_status());
 			responseList.add(res);
 		});
 		

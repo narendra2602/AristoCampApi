@@ -12,10 +12,10 @@ import lombok.NoArgsConstructor;
 public class CampTranResponse {
 	
 	private int campeventId;
-	private String Camp_date;
-	private String Camp_name;
-	private String Location_name;
-	private String Line1_manager;
+	private String CampDate;
+	private String CampName;
+	private String LocationName;
+	private String Line1Manager;
 	private int line2;
 	private String line2approval;
 	private int line3;
@@ -24,5 +24,12 @@ public class CampTranResponse {
 	private String doctorName;
 	private String campStatus;
 	private String remark;
+	private String campStartTime;
+	private String campEndTime;
+	private String psrName;
+	private String line2Remark;
+	private String line3Remark;
+	private String psrRemark;
+	
 
 }

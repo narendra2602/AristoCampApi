@@ -39,7 +39,10 @@ public class CampTran {
 	private String remark;
 	private int createdBy;
 	private int psrCode;
-	
+	private String line2Remark;
+	private String line3Remark;
+	private String psrRemark;
+	private Date createdAt;
 	
 	
 

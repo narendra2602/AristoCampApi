@@ -28,7 +28,7 @@ import com.aristocampapi.utility.AppRequestParameterUtils;
 @RequestMapping("${mrc_base_path}")
 public class CampPlannerController {
 	
-	Logger logger = LoggerFactory.getLogger(CampController.class);
+	Logger logger = LoggerFactory.getLogger(CampPlannerController.class);
 
 	@Autowired
 	private AppRequestParameterUtils appRequestParameterUtils;

@@ -1,5 +1,6 @@
 package com.aristocampapi.serviceimpl;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -58,6 +59,7 @@ public class UserInfoService implements UserDetailsService {
     
     public String updateAllUser() {
     	List<UserInfo> userList = repository.findAll();
+    	System.out.println("size of user list "+userList.size());
         //List<UserInfo> newList = userList.stream().map(user->user.setPassword(encoder.encode(user.getPassword())).collect(Collectors.toList()));
 /*           List<UserInfo> newList =   userList.stream().map(e -> {
         	      e.setPassword(encoder.encode(e.getPassword()));
@@ -70,11 +72,13 @@ public class UserInfoService implements UserDetailsService {
 								
 
     	   
-//           List<UserInfo> newList = userList.stream().filter(u->u.getId()>150)
+//           List<UserInfo> newList = userList.stream().filter(u->u.getId()>=200 && u.getId()<400)
  
                    List<UserInfo> newList = userList.stream()
         		    .map(e -> {
-        		      e.setPassword(encoder.encode(e.getPassword().trim()));
+//        		      e.setPassword(encoder.encode(e.getPassword().trim()));
+        		      e.setPassword(encoder.encode(e.getLoginName().trim()));
+//        		      e.setPassword(encoder.encode("1965"));
         		      return e;
         		    })
         		    .collect(Collectors.toList());
@@ -104,9 +108,9 @@ public class UserInfoService implements UserDetailsService {
     	   userResponse.setFname(userInfo.getFname());
     	   userResponse.setLoginName(userInfo.getLoginName());
     	   userResponse.setUtype(userInfo.getUserType());
-    	   userResponse.setLastLoginDate(userInfo.getLastLoginDateTime().toString());
+    	   userResponse.setLastLoginDate(userInfo.getLastLoginDateTime()==null?new Date().toString():userInfo.getLastLoginDateTime().toString());
     	   userResponse.setUserStatus(userInfo.getUserStatus());
-    	   userResponse.setUserType(userInfo.getUserType()==1?"Branch":userInfo.getUserType()==2?"All India":userInfo.getUserType()==3?"PMT":userInfo.getUserType()==4?"HQ":userInfo.getUserType()==5?"Multiple Branch":"Admin");
+    	   userResponse.setUserType(userInfo.getUserType()==10?"PSR/ FSO/ MR/ FO ":userInfo.getUserType()==20?"Line 1":userInfo.getUserType()==30?"Line 2":"Line 3");
     	   userResponseList.add(userResponse);
     	}
     	ApiResponse<UserResponse> apiResponse = new ApiResponse<>("User List", size,userResponseList);
@@ -117,7 +121,6 @@ public class UserInfoService implements UserDetailsService {
      public int changePassword(ChangePasswordRequest request )
      {
     		 UserInfo userDetail = repository.findById(request.getUserId());
-    		 
     		 System.out.println(" id+kya hai "+userDetail.getId());
     		 int update=0;
         	 if (userDetail!=null)

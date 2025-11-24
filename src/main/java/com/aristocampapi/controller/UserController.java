@@ -80,12 +80,11 @@ public class UserController {
     @PostMapping("/changePassword") 
     public ResponseEntity<String> changePassword(@RequestBody ChangePasswordRequest request,HttpServletRequest req) { 
 
-    	int requestValues[]=getRequestData(req);
-        int loginId=requestValues[0]; 
+     	 int requestValues[]=getRequestData(req);
+		 int loginId=requestValues[0];
 
-        request.setUserId(loginId);
-//        request.setUserId(100000263);
-
+		
+		 
     	if(service.changePassword(request)==1)
         	return ResponseEntity.ok("Password Changes successfully");
         else

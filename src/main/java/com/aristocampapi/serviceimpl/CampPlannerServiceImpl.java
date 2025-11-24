@@ -36,7 +36,8 @@ public class CampPlannerServiceImpl implements CampPlannerService{
 			campPlanner.setLine2(data.getLine2());
 			campPlanner.setLine3(data.getLine3());
 			campPlanner.setMktYear(data.getMktYear());
-			campPlanner.setCampStatus(data.getCampStatus());
+//			campPlanner.setCampStatus(data.getCampStatus());
+			campPlanner.setCampStatus("N");
 			dataList.add(campPlanner);
 		});
 		List<CampPlanner> campPlaner = campPlannerDao.saveAll(dataList);

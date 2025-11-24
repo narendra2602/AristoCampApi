@@ -14,6 +14,12 @@ public interface CampTranDto {
 	public String getDoctor_name();
 	public String getCamp_status();
 	public String getCamp_remark();
+	public String getCamp_starttime();
+	public String getCamp_endtime();
+	public String getPsr_name();
+	public String getline2Remark();
+	public String getline3Remark();
+	public String getPsr_remark();
 
 	
 

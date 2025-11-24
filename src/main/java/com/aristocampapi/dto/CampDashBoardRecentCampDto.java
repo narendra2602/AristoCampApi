@@ -12,5 +12,7 @@ public interface CampDashBoardRecentCampDto {
 	public String getLocation_name();
 	public String getLine1_manager();
 	public String getApproved_status();
+	public String getCamp_status();
+
 
 }

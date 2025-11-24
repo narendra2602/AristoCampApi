@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import com.aristocampapi.dao.CampApprovalDao;
 import com.aristocampapi.dto.CampApprovalStatusDto;
 import com.aristocampapi.entity.CampTran;
+import com.aristocampapi.request.CampTranRequest;
 import com.aristocampapi.response.CampApprovalResponse;
 import com.aristocampapi.response.CampApprovalStatusResponse;
 import com.aristocampapi.service.CampApprovalService;
@@ -49,25 +50,33 @@ public class CampApprovalServiceImpl implements CampApprovalService{
 
 	}
 	@Override
-	public CampApprovalStatusResponse saveApprovalStatusData(int campeventId, int userType,String approvalStatus) {
+	public CampApprovalStatusResponse saveApprovalStatusData(CampTranRequest camptranrequest , int userType) {
 
-		Optional<CampTran> campTranData = campApprovalDao.findById(campeventId);
+		Optional<CampTran> campTranData = campApprovalDao.findById(camptranrequest.getCampeventId());
 		CampTran camp = campTranData.get();
-		String message=approvalStatus.equals("Y")?"Approved Successfully":"Not Approved";
+		String message=null;
+		 message=camptranrequest.getLine2approvalStatus().equals("Y")?"Approved Successfully":"Not Approved";
 
 		if(userType==30)
 		{
-			camp.setLine2approvalStatus(approvalStatus);
+			camp.setLine2approvalStatus(camptranrequest.getLine2approvalStatus());
+			// as required on 18/12/2024
+			camp.setLine3approvalStatus(camptranrequest.getLine2approvalStatus());
+			camp.setLine2Remark(camptranrequest.getRemark());
+			camp.setLine3Remark(camptranrequest.getRemark());
 		}
 		else if(userType==40)
 		{
-			camp.setLine3approvalStatus(approvalStatus);
+			camp.setLine3approvalStatus(camptranrequest.getLine3approvalStatus());
+			camp.setLine2approvalStatus(camptranrequest.getLine3approvalStatus());
+			camp.setLine3Remark(camptranrequest.getRemark());
+			camp.setLine2Remark(camptranrequest.getRemark());
 			
 		}
 			
 		camp = campApprovalDao.save(camp);
 		CampApprovalStatusResponse res=new CampApprovalStatusResponse();
-		res.setId(campeventId);
+		res.setId(camptranrequest.getCampeventId());
 		res.setMessage(message);
 		return res;
 	}

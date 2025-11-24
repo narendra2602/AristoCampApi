@@ -45,7 +45,15 @@ public class DoctorCampServiceImpl implements DoctorCampService{
 		DoctorCampDto data=doctorCampDao.getCampDoctorDetail(doctorCode); 
 		int size=0;
 		
+		
 			DoctorResponse res=new DoctorResponse();
+			if(data==null)
+			{
+				res.setId(doctorCode);
+				res.setName("Not Found");
+			}
+			else
+			{
 			res.setId(data.getId());
 			res.setName(data.getName());
 			res.setQualification(data.getQualification());
@@ -55,7 +63,7 @@ public class DoctorCampServiceImpl implements DoctorCampService{
 			res.setPinCode(data.getPin_code());
 			res.setMobileNo(data.getMobile_no());
 			res.setEmailId(data.getEmail_id());
-			
+			}
 		
 		return res;
 	}

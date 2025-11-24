@@ -35,4 +35,8 @@ public class CampTranRequest {
 	private int psrCode;
 	private int loginId;
 	private int userType;
+	private String line2Remark;
+	private String line3Remark;
+	private String psrRemark;
+
 }
